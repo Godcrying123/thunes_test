@@ -1,0 +1,57 @@
+version: '3.7'
+services:
+  postgres:
+    image: postgres:latest
+    restart: always
+    ports:
+      - 5433:5432
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - "${POSTGRES_DATA_PATH}/data/:/var/lib/postgresql/data"
+      - "${POSTGRES_DATA_PATH}/backup/:/tmp/"
+
+  django-web:
+    # image: thunes:latest
+    build: thunes_test/.
+    depends_on: 
+      - postgres
+    restart: always
+    ports:
+      - 8000:8000
+      - 8001:8001
+      - 9001:9001
+      # - 5555:5555
+    env_file:
+      - .env
+    links:
+      - postgres
+    command: ./run_supervisord.sh &
+    volumes:
+      - "./supervisord/:/tmp"
+
+  nginx:
+    # image: nginx:prod
+    build: nginx/.
+    restart: always
+    depends_on: 
+      - django-web
+    links:
+      - django-web
+    ports:
+      # - 80:80
+      # - 8877:8877
+      - 8080:8080
+    env_file:
+      - .env
+    environment:
+      - NGINX_PORT=${NGINX_PORT}
+    volumes:
+      - "$MEDIA_PATH:/opt/shopsite/media/"
+      - "$NGINX_DIR/tmp_log:/tmp/"
+      - "$NGINX_DIR/var_log:/var/log/nginx/"
+      # - "./nginx/vuejs:/usr/share/nginx/html/frontend:ro"
+    # command: sh -c "exec nginx -g 'daemon off;'"
