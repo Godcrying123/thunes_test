@@ -3,6 +3,7 @@ from rest_framework import generics
 from .models import Beneficiary
 from .serializers import BeneficiarySerializer
 
+
 # Create your views here.
 
 
