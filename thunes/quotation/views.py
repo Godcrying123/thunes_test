@@ -1,5 +1,6 @@
 import json
 import random
+import time
 
 import requests
 from django.shortcuts import get_object_or_404
@@ -54,8 +55,8 @@ class QuotationCreateView(APIView):
     }
 
     def post(self, request, *args, **kwargs):
-        # import random to generate different external id
-        self.quotation_body['external_id'] = str(148118432398 + random.randint(0, 10000000000))
+        # import random to generate different external id with the basic rule
+        self.quotation_body['external_id'] = str(int(time.time())) + str(random.randint(0, 100)).zfill(2)
         APIObject = APIAccessGrant('/quotations/')
         apiprams = APIObject.parmReturn()
 
