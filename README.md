@@ -24,7 +24,7 @@
          http_proxy=http://xxx.xx.xxx:xxxx \
          https_proxy=http://xxx.xx.xxx:xxxx
   ```
-  if you do not want to configure the proxy, you can comment or delete these two parameter setting and please do not forget to delete the   "\" behind the setence "ENV workdir=/opt/Thunes/"
+  if you do not want to configure the proxy, you can comment or delete these two parameter setting and please do not forget to delete the anti-slash " \ " behind the setence "ENV workdir=/opt/Thunes/"
   * please make sure these ports in your vm has not been occupied by other applications.
   - 8080:8080
   - 5433:5432
@@ -40,3 +40,11 @@
   ```
   the first command is to start up the docker-compose cluster in the back-end.
   the second command is to check all docker containers running status and its port expose status.
+  
+  4. the index page is opened at the port 8080 with default and you can see below page when you access the webpage:
+  ![home page](image/home.jpg)
+  
+  5. and please open the /api/docs path to review all apis exposed in the backend:
+  ![api docs page](image/apidocs.jpg)
+  
+  (PS: somehow, this api cannot be interconnect with as I review every request will miss the port para when sending to backend. currently, I have no idea with issue why this para will be lost when running in the container)
