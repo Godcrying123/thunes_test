@@ -60,6 +60,8 @@ class QuotationCreateView(APIView):
         APIObject = APIAccessGrant('/quotations/')
         apiprams = APIObject.parmReturn()
 
+        print(request.data)
+
         # the method to get the key
         (response_body, value), = request.data.items()
 
