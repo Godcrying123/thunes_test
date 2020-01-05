@@ -64,6 +64,9 @@ class TransactionCreateView(APIView):
         APIObject = APIAccessGrant('/quotations/' + str(quotation_id) + '/transactions')
         apiprams = APIObject.parmReturn()
 
+        # enable to see the post body data
+        # print(request.data)
+
         response = requests.post(apiprams['urlparm'], headers={
             'X-TransferTo-apikey': apiprams['apikey'],
             'X-TransferTo-nonce': apiprams['nonce'],
