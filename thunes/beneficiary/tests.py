@@ -87,7 +87,7 @@ class BeneficiaryTestCase(TestCase):
         print('the test function name: {}'.format(sys._getframe().f_code.co_name))
         url = reverse('beneficiary:beneficiaries-create')
         response = self.client.post(url, data=post_body, content_type='application/json')
-        return self.assertTrue(response.status_code, 200)
+        return self.assertTrue(response.status_code, 201)
 
     def test_beneficiaries_retrieve_that_will_pass(self):
         """
@@ -132,6 +132,38 @@ class BeneficiaryTestCase(TestCase):
         url = reverse('beneficiary:beneficiary-entity-by-id-update', kwargs={'pk': 1})
         response = self.client.post(url, content_type='application/json')
         return self.assertTrue(response.status_code, 200)
+
+    def test_beneficiaries_update_content_validation_that_will_pass(self):
+        """
+        the function to test the beneficiary update function and validation
+        """
+        print('the test function name: {}'.format(sys._getframe().f_code.co_name))
+        post_body = {
+            'lastname': 'Dora',
+            'firstname': 'Jane1',
+            'nationality_country_iso_code': 'FRA',
+            'date_of_birth': '1970-07-01',
+            'country_of_birth_iso_code': 'FRA',
+            'gender': 'MALE',
+            'address': '42 Rue des fleurs',
+            'postal_code': '75000',
+            'city': 'Paris',
+            'country_iso_code': 'FRA',
+            'msisdn': '1123131413',
+            'email': 'kzhang@microfocus.com',
+            'id_type': 'PASSPORT',
+            'id_country_iso_code': 'FRA',
+            'id_number': '1123131413',
+            'occupation': 'Teacher'
+        }
+        url = reverse('beneficiary:beneficiary-entity-by-id-update', kwargs={'pk': 1})
+        response = self.client.put(url, data=post_body, content_type='application/json')
+
+        # serialize all model object data
+        beneficiaries = Beneficiary.objects.get(pk=1)
+        serializer = BeneficiarySerializer(beneficiaries, many=False)
+        self.assertEqual(response.json(), serializer.data)
+        self.assertEqual(response.status_code, 200)
 
     def test_beneficiaries_update_withoutID_that_will_fail(self):
         """
