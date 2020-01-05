@@ -50,9 +50,8 @@ export default {
   },
   data () {
     return {
-      baseURL: '',
-      // baseURL: 'http://django-web:8877',
-      // baseURL: 'http://localhost:8000',
+      // baseURL: '',
+      baseURL: 'http://localhost:8000',
       quotationCreateAPI:'/api/v1/quotation/create',
       quotationGetAPI:'/api/v1/quotation/',
       transactionCreateAPI: '/api/v1/transactions/',
@@ -111,6 +110,7 @@ export default {
     async quotationCreate() {
       // console.log(JSON.stringify(this.quotationEntity))
       await this.$axios.post(this.baseURL + this.quotationCreateAPI, JSON.stringify(this.quotationEntity)).then(response => {
+        // console.log(JSON.stringify(this.quotationEntity))
         console.log(response.data)
         this.quotation_id = response.data.id
         this.external_id = response.data.external_id

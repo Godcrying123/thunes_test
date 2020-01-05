@@ -36,9 +36,8 @@ export default {
   },
   data () {
     return {
-      baseURL: '',
-      // baseURL: 'http://django-web:8877',
-      // baseURL: 'http://localhost:8000',
+      // baseURL: '',
+      baseURL: 'http://localhost:8000',
       createdTransactionListAPI: '/api/v1/transactions?status=CREATED',
       confirmedTransactionListAPI: '/api/v1/transactions?status=CONFIRMED',
       detailTransactionAPI:"/api/v1/transactions/detail/",

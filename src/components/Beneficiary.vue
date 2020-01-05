@@ -91,20 +91,20 @@
                 <label for="inputIDTypeB">ID Type</label>
                 <select id="inputIDTypeB" v-model="BeneficiaryObject.id_type" class="form-control">
                     <option selected value="PASSPORT">Passport</option>
-                    <option>National Identification Card</option>
-                    <option>Driving License</option>
-                    <option>Social Security Card/Number</option>
-                    <option>Tax Payer Identification Card/Number</option>
-                    <option>Senior Citizen Identification Card</option>
-                    <option>Birth Certificate</option>
-                    <option>Village Elder Identification Card</option>
-                    <option>Permanent Residency Identification Card</option>
-                    <option>Alien Registration Certificate/Card</option>
-                    <option>PAN Card</option>
-                    <option>Voter’s Identification Card</option>
-                    <option>Health Insurance Card/Number</option>
-                    <option>Identification Card</option>
-                    <option>Others not listed</option>
+                    <option value="NATIONAL_ID">National Identification Card</option>
+                    <option value="DRIVING_LICENSE">Driving License</option>
+                    <option value="SOCIAL_SECURITY">Social Security Card/Number</option>
+                    <option value="TAX_ID">Tax Payer Identification Card/Number</option>
+                    <option value="SENIOR_CITIZEN_ID">Senior Citizen Identification Card</option>
+                    <option value="BIRTH_CERTIFICATE">Birth Certificate</option>
+                    <option value="VILLAGE_ELDER_ID">Village Elder Identification Card</option>
+                    <option value="RESIDENT_CARD">Permanent Residency Identification Card</option>
+                    <option value="ALIEN_REGISTRATION">Alien Registration Certificate/Card</option>
+                    <option value="PAN_CARD">PAN Card</option>
+                    <option value="VOTERS_ID">Voter’s Identification Card</option>
+                    <option value="HEALTH_CARD">Health Insurance Card/Number</option>
+                    <option value="EMPLOYER_ID">Identification Card</option>
+                    <option value="OTHER">Others not listed</option>
                 </select>
             </div>
             <div class="form-group col-md-6">
