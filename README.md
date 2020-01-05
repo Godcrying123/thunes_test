@@ -89,7 +89,8 @@ python manage.py test -> (to start all test case wrote in different apps)
 2. pip install virtualenv
 3. python3 -m venv venv & source venv/bin/activate
 4. pip install --upgrade pip & pip install -r requirements.txt
-5. cd thunes & python manage.py runserver
+5. change the APISecret.ini file based on the comment in it
+6. cd thunes & python manage.py runserver
 ```
 (PS: better run this web in win, if this pop up some error about sqlite3 version, please pip install django==2.1.8 to downgrade the django framework to be compatiable with sqlite3 version)
 * then you can access the api docs /api/docs path to check all exposed apis.
