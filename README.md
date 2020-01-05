@@ -1,5 +1,32 @@
 # thunes_test
 * This branch is for the docker-compose files, you can download these files to start up the docker-compose cluster.
+* here is the file struct for this folder:
+```
+.
+├── docker-compose.yml -> (docker-compose defined yaml file)
+├── nginx
+│   ├── backend.conf 
+│   ├── default.conf -> (the nginx config file and its proxy setting for backend)
+│   ├── Dockerfile -> (the docker file to build the nginx image)
+│   ├── nginx.conf
+│   ├── static -> (the static file for backend css)
+│   ├── tmp_log -> (the volume to bind with the tmp folder for nginx container)
+│   ├── var_log -> (the volume to bind with the var folder for nginx container)
+│   └── vuejs -> -> (the file for built vuejs code)
+│       ├── index.html
+│       └── static
+├── postgres (the volume to bind with the postgres container)
+│   ├── backup
+│   └── data
+├── README.md
+├── .env -> (the env para file to define env for multi container)
+└── thunes_test 
+    ├── APISecret.ini -> (the file to define the api secret and key as well as base url)
+    ├── Dockerfile (the docker file to build the django image)
+    ├── requirements.txt (the file to install required python package when building)
+    ├── run_supervisord.sh (the entrypoint script for django container)
+    └── supervisord.conf (the supervisord config file)
+```
 ### The step to run this docker-compose cluster ###
 1. check your machine has installed the docker-compose by typing this below command:
   ```
