@@ -1,5 +1,5 @@
 requests==2.22.0
-django==2.2.8
+django==2.2.22
 Pillow==6.2.0
 coreapi==2.3.3
 django-parler==2.0
